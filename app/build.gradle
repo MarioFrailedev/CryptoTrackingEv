@@ -31,4 +31,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //OKHttp to handle the REST-API requests.
+    implementation("com.squareup.okhttp3:okhttp:4.0.0")
+
+    //GSon for easy JSON parsing and conversion.
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    //Picasso for async image fetching and caching
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+
 }

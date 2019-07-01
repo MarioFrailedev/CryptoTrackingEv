@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.manidevs.cryptotrackingev.Adapter.CoinAdapter
@@ -41,12 +42,6 @@ class MainActivity : AppCompatActivity() {
         getCoins()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
     fun getCoins() {
         //enqueue ensures that this call does not occur on the Main UI thread, async call, network transactions should be done off the Main UI Thread
         client.newCall(request).enqueue(object : Callback {
@@ -68,7 +63,34 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
 
+    /*
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            // Check if user triggered a refresh:
+            R.menu.main_menu -> {
+                Log.i(LOG_TAG, "Refresh menu item selected")
+
+                // Signal SwipeRefreshLayout to start the progress indicator
+                mySwipeRefreshLayout.isRefreshing = true
+
+                // Start the refresh background task.
+                // This method calls setRefreshing(false) when it's finished.
+                getCoins()
+
+                return true
+            }
+        }
+
+        // User didn't trigger a refresh, let the superclass handle this action
+        return super.onOptionsItemSelected(item)
+    }*/
 
 
 }
